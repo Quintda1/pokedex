@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Overzicht{% endblock %}
+{% block content %}
+  <section class="intro">
+    <h1>Alle Pokémon</h1>
+    <p>Zoek op naam of nummer, of blader door alle {{ total }} Pokémon. Klik op een Pokémon voor alle gegevens.</p>
+  </section>
+
+  <ul class="grid">
+    {% for p in pokemon_list %}{% include "_card.html" %}{% endfor %}
+  </ul>
+
+  <nav class="pagination" aria-label="Paginering">
+    {% if page > 1 %}
+      <a href="{{ url_for('index', page=page-1) }}">&larr; Vorige</a>
+    {% else %}<span class="disabled">&larr; Vorige</span>{% endif %}
+    <span>Pagina {{ page }} van {{ total_pages }}</span>
+    {% if page < total_pages %}
+      <a href="{{ url_for('index', page=page+1) }}">Volgende &rarr;</a>
+    {% else %}<span class="disabled">Volgende &rarr;</span>{% endif %}
+  </nav>
+{% endblock %}

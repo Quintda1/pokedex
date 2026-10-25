@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+{% block title %}Fout {{ code }}{% endblock %}
+{% block content %}
+  <section class="error">
+    <p class="error-code">{{ code }}</p>
+    <h1>{% if code == 404 %}Niet gevonden{% elif code == 503 %}Tijdelijk niet beschikbaar{% else %}Er ging iets mis{% endif %}</h1>
+    <p>{{ message }}</p>
+    <p><a class="button" href="{{ url_for('index') }}">Terug naar het overzicht</a></p>
+  </section>
+{% endblock %}

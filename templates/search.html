@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% block title %}Zoeken naar {{ query }}{% endblock %}
+{% block content %}
+  <h1>Zoekresultaten voor “{{ query }}”</h1>
+  {% if results %}
+    <p>{{ results | length }} Pokémon gevonden.</p>
+    <ul class="grid">
+      {% for p in results %}{% include "_card.html" %}{% endfor %}
+    </ul>
+  {% else %}
+    <p class="alert alert-info">Geen Pokémon gevonden met “{{ query }}” in de naam.
+      Controleer de spelling of probeer een deel van de naam.</p>
+  {% endif %}
+  <p><a href="{{ url_for('index') }}">&larr; Terug naar het overzicht</a></p>
+{% endblock %}

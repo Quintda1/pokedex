@@ -1,0 +1,41 @@
+<!doctype html>
+<html lang="nl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>{% block title %}Pokédex{% endblock %} · Pokédex</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+  <header class="site-header">
+    <div class="container header-inner">
+      <a class="logo" href="{{ url_for('index') }}">
+        <span class="logo-ball" aria-hidden="true"></span> Pokédex
+      </a>
+      {# Zoekformulier staat op elke pagina. GET, zodat de zoekopdracht in de URL staat. #}
+      <form class="search" action="{{ url_for('search') }}" method="get" role="search">
+        <label class="visually-hidden" for="q">Zoek een Pokémon</label>
+        <input id="q" name="q" type="search" placeholder="Naam of nummer, bijv. pikachu of 25"
+               value="{{ query | default('') }}" maxlength="50" required>
+        <button type="submit">Zoeken</button>
+      </form>
+    </div>
+  </header>
+
+  <main class="container">
+    {# Meldingen (bijv. ongeldige invoer) uit flash() #}
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% for category, message in messages %}
+        <p class="alert alert-{{ category }}" role="alert">{{ message }}</p>
+      {% endfor %}
+    {% endwith %}
+
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer class="site-footer container">
+    Gegevens: <a href="https://pokeapi.co/" rel="noopener">PokeAPI</a>.
+    Pokémon en namen zijn eigendom van Nintendo / Game Freak.
+  </footer>
+</body>
+</html>

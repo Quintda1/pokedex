@@ -1,0 +1,8 @@
+{# Herbruikbaar kaartje voor één Pokémon in een raster. Verwacht variabele 'p'. #}
+<li>
+  <a class="card" href="{{ url_for('pokemon_detail', identifier=p.name) }}">
+    <img src="{{ p.image_url }}" alt="{{ p.display_name }}" loading="lazy" width="120" height="120">
+    <span class="card-number">#{{ '%03d' % p.id }}</span>
+    <span class="card-name">{{ p.display_name }}</span>
+  </a>
+</li>

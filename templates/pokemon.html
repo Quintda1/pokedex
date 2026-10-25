@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% block title %}{{ pokemon.display_name }}{% endblock %}
+{% block content %}
+  <nav class="neighbours" aria-label="Vorige en volgende Pokémon">
+    {% if previous_pokemon %}
+      <a href="{{ url_for('pokemon_detail', identifier=previous_pokemon.name) }}">&larr; #{{ '%03d' % previous_pokemon.id }} {{ previous_pokemon.display_name }}</a>
+    {% else %}<span></span>{% endif %}
+    {% if next_pokemon %}
+      <a href="{{ url_for('pokemon_detail', identifier=next_pokemon.name) }}">#{{ '%03d' % next_pokemon.id }} {{ next_pokemon.display_name }} &rarr;</a>
+    {% endif %}
+  </nav>
+
+  <article class="detail">
+    <div class="detail-image type-bg-{{ pokemon.types[0].name if pokemon.types else 'normal' }}">
+      {% if pokemon.image_url %}
+        <img src="{{ pokemon.image_url }}" alt="Afbeelding van {{ pokemon.display_name }}" width="320" height="320">
+      {% else %}
+        <p>Geen afbeelding beschikbaar</p>
+      {% endif %}
+    </div>
+
+    <div class="detail-info">
+      <p class="detail-number">{{ pokemon.number }}</p>
+      <h1>{{ pokemon.display_name }}</h1>
+      {% if pokemon.genus %}<p class="genus">{{ pokemon.genus }}</p>{% endif %}
+
+      <ul class="types">
+        {% for t in pokemon.types %}<li class="type type-{{ t.name }}">{{ t.label }}</li>{% endfor %}
+      </ul>
+
+      {% if pokemon.description %}<p class="description">{{ pokemon.description }}</p>{% endif %}
+
+      <dl class="facts">
+        <div><dt>Lengte</dt><dd>{{ '%.1f' % pokemon.height_m }} m</dd></div>
+        <div><dt>Gewicht</dt><dd>{{ '%.1f' % pokemon.weight_kg }} kg</dd></div>
+        <div><dt>Basiservaring</dt><dd>{{ pokemon.base_experience if pokemon.base_experience is not none else '–' }}</dd></div>
+      </dl>
+
+      <h2>Vaardigheden</h2>
+      <ul class="abilities">
+        {% for a in pokemon.abilities %}
+          <li>{{ a.label }}{% if a.hidden %} <span class="badge">verborgen</span>{% endif %}</li>
+        {% endfor %}
+      </ul>
+
+      <h2>Basisstatistieken</h2>
+      <table class="stats">
+        <tbody>
+        {% for s in pokemon.stats %}
+          <tr>
+            <th scope="row">{{ s.label }}</th>
+            <td class="stat-value">{{ s.value }}</td>
+            <td class="stat-bar"><meter min="0" max="255" value="{{ s.value }}" title="{{ s.percentage }}% van maximum">{{ s.value }}</meter></td>
+          </tr>
+        {% endfor %}
+          <tr class="stat-total"><th scope="row">Totaal</th><td class="stat-value">{{ pokemon.total_stats }}</td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </article>
+{% endblock %}
