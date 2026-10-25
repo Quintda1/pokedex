@@ -1,0 +1,54 @@
+{
+ "name": "pikachu",
+ "genera": [
+  {
+   "genus": "Mouse Pok\u00e9mon",
+   "language": {
+    "name": "en",
+    "url": "/api/v2/language/9/"
+   }
+  },
+  {
+   "genus": "\u306d\u305a\u307f\u30dd\u30b1\u30e2\u30f3",
+   "language": {
+    "name": "ja",
+    "url": "/api/v2/language/11/"
+   }
+  }
+ ],
+ "flavor_text_entries": [
+  {
+   "flavor_text": "Pikachu that can generate powerful electricity\nhave cheek sacs that are extra soft and\nsuper stretchy.",
+   "language": {
+    "name": "en",
+    "url": "/api/v2/language/9/"
+   },
+   "version": {
+    "name": "sword",
+    "url": "/api/v2/version/33/"
+   }
+  },
+  {
+   "flavor_text": "When Pikachu meet, they\u2019ll touch their tails\ntogether and exchange electricity through them\nas a form of greeting.",
+   "language": {
+    "name": "en",
+    "url": "/api/v2/language/9/"
+   },
+   "version": {
+    "name": "shield",
+    "url": "/api/v2/version/34/"
+   }
+  },
+  {
+   "flavor_text": "Possesses cheek sacs in which it stores electricity. This clever\nforest-dweller roasts tough berries with an electric shock before\nconsuming them.",
+   "language": {
+    "name": "en",
+    "url": "/api/v2/language/9/"
+   },
+   "version": {
+    "name": "legends-arceus",
+    "url": "/api/v2/version/39/"
+   }
+  }
+ ]
+}

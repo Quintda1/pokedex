@@ -1,0 +1,54 @@
+{
+ "name": "charizard",
+ "genera": [
+  {
+   "genus": "Flame Pok\u00e9mon",
+   "language": {
+    "name": "en",
+    "url": "/api/v2/language/9/"
+   }
+  },
+  {
+   "genus": "\u304b\u3048\u3093\u30dd\u30b1\u30e2\u30f3",
+   "language": {
+    "name": "ja",
+    "url": "/api/v2/language/11/"
+   }
+  }
+ ],
+ "flavor_text_entries": [
+  {
+   "flavor_text": "When this Pok\u00e9mon expels a blast of superhot\nfire, the red flame at the tip of its tail burns\nmore intensely.",
+   "language": {
+    "name": "en",
+    "url": "/api/v2/language/9/"
+   },
+   "version": {
+    "name": "lets-go-eevee",
+    "url": "/api/v2/version/32/"
+   }
+  },
+  {
+   "flavor_text": "It spits fire that is hot enough to melt boulders.\nIt may cause forest fires by blowing flames.",
+   "language": {
+    "name": "en",
+    "url": "/api/v2/language/9/"
+   },
+   "version": {
+    "name": "sword",
+    "url": "/api/v2/version/33/"
+   }
+  },
+  {
+   "flavor_text": "Its wings can carry this Pok\u00e9mon close to an\naltitude of 4,600 feet. It blows out fire at very\nhigh temperatures.",
+   "language": {
+    "name": "en",
+    "url": "/api/v2/language/9/"
+   },
+   "version": {
+    "name": "shield",
+    "url": "/api/v2/version/34/"
+   }
+  }
+ ]
+}
