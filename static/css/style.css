@@ -1,15 +1,14 @@
-/* Stijl van de Pokédex-website.
-   Kleuren staan als variabelen bovenaan, zodat ze op één plek aan te passen zijn. */
+/* Opmaak van de Pokédex-website: licht en simpel (wit en blauw).
+   De kleuren staan bovenaan als variabelen, zodat je ze makkelijk kunt aanpassen. */
 
 :root {
-  --red: #d63a2f;
-  --red-dark: #a92a21;
-  --ink: #1f2430;
-  --muted: #5d6475;
-  --line: #e3e5ea;
-  --bg: #f5f6f8;
-  --card: #ffffff;
-  --radius: 12px;
+  --blue: #2563eb;
+  --blue-dark: #1d4ed8;
+  --text: #1e293b;
+  --grey: #64748b;
+  --line: #e2e8f0;
+  --bg: #f8fafc;
+  --white: #ffffff;
 }
 
 * { box-sizing: border-box; }
@@ -17,137 +16,131 @@
 body {
   margin: 0;
   font-family: system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
-  color: var(--ink);
+  color: var(--text);
   background: var(--bg);
   line-height: 1.5;
 }
 
-a { color: var(--red-dark); }
+a { color: var(--blue); }
 
-.container { max-width: 1080px; margin: 0 auto; padding: 0 16px; }
+.container { max-width: 1000px; margin: 0 auto; padding: 0 16px; }
 
+/* Verborgen tekst voor schermlezers */
 .visually-hidden {
   position: absolute; width: 1px; height: 1px; overflow: hidden;
   clip: rect(0 0 0 0); white-space: nowrap;
 }
 
-/* ---------- Header met zoekbalk ---------- */
-.site-header { background: var(--red); color: #fff; margin-bottom: 32px; }
+/* ---------- Bovenbalk met zoekveld ---------- */
+.site-header {
+  background: var(--white);
+  border-bottom: 3px solid var(--blue);
+  margin-bottom: 32px;
+}
 .header-inner {
   display: flex; align-items: center; justify-content: space-between;
   gap: 16px; padding-top: 14px; padding-bottom: 14px; flex-wrap: wrap;
 }
 .logo {
-  color: #fff; text-decoration: none; font-weight: 700; font-size: 1.4rem;
-  display: flex; align-items: center; gap: 10px;
+  color: var(--blue); text-decoration: none; font-weight: 700; font-size: 1.3rem;
+  display: flex; align-items: center; gap: 8px;
 }
 .logo-ball {
-  width: 26px; height: 26px; border-radius: 50%; border: 3px solid #fff;
-  background: linear-gradient(#fff 0 44%, var(--ink) 44% 56%, #fff 56%);
+  width: 20px; height: 20px; border-radius: 50%; background: var(--blue);
 }
-.search { display: flex; gap: 8px; flex: 1; max-width: 460px; }
+.search { display: flex; gap: 8px; flex: 1; max-width: 420px; }
 .search input {
-  flex: 1; min-width: 0; padding: 10px 14px; border: 0; border-radius: 8px; font-size: 1rem;
+  flex: 1; min-width: 0; padding: 9px 12px; font-size: 1rem;
+  border: 1px solid var(--line); border-radius: 6px;
 }
+.search input:focus { outline: 2px solid var(--blue); border-color: var(--blue); }
 .search button, .button {
-  padding: 10px 18px; border: 0; border-radius: 8px; font-weight: 600; font-size: 1rem;
-  background: var(--ink); color: #fff; cursor: pointer; text-decoration: none; display: inline-block;
+  padding: 9px 16px; border: 0; border-radius: 6px; font-size: 1rem;
+  background: var(--blue); color: #fff; cursor: pointer; text-decoration: none; display: inline-block;
 }
-.search button:hover, .button:hover { background: #000; }
+.search button:hover, .button:hover { background: var(--blue-dark); }
 
 /* ---------- Meldingen ---------- */
-.alert { padding: 12px 16px; border-radius: 8px; border: 1px solid var(--line); background: #fff; }
-.alert-warning { border-color: #e8b33a; background: #fff7e3; }
-.alert-info { border-color: #8fb3e8; background: #eef4fd; }
+.alert { padding: 12px 16px; border-radius: 6px; border: 1px solid var(--line); background: var(--white); }
+.alert-warning { border-color: #facc15; background: #fefce8; }
+.alert-info { border-color: #93c5fd; background: #eff6ff; }
 
-/* ---------- Overzicht (raster met kaartjes) ---------- */
-.intro p { color: var(--muted); margin-top: -8px; }
+/* ---------- Overzicht met kaartjes ---------- */
+.intro p { color: var(--grey); margin-top: -8px; }
 .grid {
   list-style: none; padding: 0; margin: 24px 0;
-  display: grid; gap: 16px; grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  display: grid; gap: 12px; grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
 }
 .card {
-  display: flex; flex-direction: column; align-items: center; padding: 14px;
-  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius);
-  text-decoration: none; color: var(--ink); transition: transform .12s, box-shadow .12s;
+  display: flex; flex-direction: column; align-items: center; padding: 12px;
+  background: var(--white); border: 1px solid var(--line); border-radius: 8px;
+  text-decoration: none; color: var(--text);
 }
-.card:hover { transform: translateY(-3px); box-shadow: 0 6px 18px rgba(0,0,0,.08); }
-.card img { width: 120px; height: 120px; object-fit: contain; }
-.card-number { color: var(--muted); font-size: .85rem; }
+.card:hover { border-color: var(--blue); }
+.card img { width: 100px; height: 100px; object-fit: contain; }
+.card-number { color: var(--grey); font-size: .85rem; }
 .card-name { font-weight: 600; text-align: center; }
 
 .pagination {
   display: flex; justify-content: center; align-items: center; gap: 20px; margin: 8px 0 32px;
 }
-.pagination .disabled { color: #b0b4bd; }
+.pagination .disabled { color: #cbd5e1; }
 
-/* ---------- Detailpagina ---------- */
+/* ---------- Pagina van één Pokémon ---------- */
 .neighbours { display: flex; justify-content: space-between; margin-bottom: 16px; }
 .detail {
-  display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1.2fr); gap: 32px;
-  background: var(--card); border: 1px solid var(--line); border-radius: var(--radius); padding: 24px;
+  display: grid; grid-template-columns: 1fr 1.2fr; gap: 32px;
+  background: var(--white); border: 1px solid var(--line); border-radius: 8px; padding: 24px;
 }
 .detail-image {
-  border-radius: var(--radius); display: flex; align-items: center; justify-content: center;
-  min-height: 360px; background: #eef0f3; align-self: start;
+  display: flex; align-items: center; justify-content: center; align-self: start;
+  background: var(--bg); border-radius: 8px; min-height: 320px;
 }
-.detail-image img { width: 100%; max-width: 320px; height: auto; }
-.detail-number { color: var(--muted); margin: 0; font-weight: 600; }
-.detail h1 { margin: 0; font-size: 2.2rem; }
-.genus { margin: 0 0 8px; color: var(--muted); }
-.description { font-size: 1.05rem; }
-.detail h2 { font-size: 1.1rem; margin: 24px 0 8px; }
+.detail-image img { width: 100%; max-width: 300px; height: auto; }
+.detail-number { color: var(--grey); margin: 0; }
+.detail h1 { margin: 0; font-size: 2rem; }
+.genus { margin: 0 0 8px; color: var(--grey); }
+.detail h2 { font-size: 1.05rem; margin: 24px 0 8px; color: var(--blue); }
 
-.types { list-style: none; padding: 0; display: flex; gap: 8px; margin: 8px 0; }
+.types { list-style: none; padding: 0; display: flex; gap: 6px; margin: 8px 0; }
 .type {
-  padding: 3px 12px; border-radius: 999px; color: #fff; font-size: .9rem; font-weight: 600;
-  background: #888;
+  padding: 2px 10px; border-radius: 4px; color: #fff; font-size: .85rem; background: var(--grey);
 }
 
-.facts { display: flex; gap: 12px; margin: 16px 0 0; flex-wrap: wrap; }
-.facts div { background: var(--bg); border-radius: 8px; padding: 8px 14px; min-width: 110px; }
-.facts dt { font-size: .8rem; color: var(--muted); }
-.facts dd { margin: 0; font-weight: 700; font-size: 1.1rem; }
+.facts { display: flex; gap: 24px; margin: 16px 0 0; flex-wrap: wrap; }
+.facts dt { font-size: .8rem; color: var(--grey); }
+.facts dd { margin: 0; font-weight: 600; }
 
 .abilities { padding-left: 20px; margin: 0; }
-.badge {
-  font-size: .75rem; background: var(--bg); border: 1px solid var(--line);
-  border-radius: 999px; padding: 1px 8px; color: var(--muted);
-}
+.badge { font-size: .75rem; color: var(--grey); }
 
 .stats { width: 100%; border-collapse: collapse; }
-.stats th { text-align: left; font-weight: 500; color: var(--muted); width: 140px; padding: 4px 0; }
-.stats .stat-value { width: 48px; font-weight: 700; text-align: right; padding-right: 12px; }
-.stats meter { width: 100%; height: 12px; }
-.stats meter::-webkit-meter-bar { background: var(--bg); border: 0; border-radius: 6px; height: 12px; }
-.stats meter::-webkit-meter-optimum-value { background: var(--red); border-radius: 6px; }
-.stats meter::-moz-meter-bar { background: var(--red); border-radius: 6px; }
-.stat-total th, .stat-total td { border-top: 1px solid var(--line); padding-top: 8px; }
+.stats th { text-align: left; font-weight: normal; color: var(--grey); width: 130px; padding: 3px 0; }
+.stats .stat-value { width: 44px; font-weight: 600; text-align: right; padding-right: 12px; }
+.stats meter { width: 100%; height: 10px; }
+.stats meter::-webkit-meter-bar { background: var(--line); border: 0; border-radius: 5px; height: 10px; }
+.stats meter::-webkit-meter-optimum-value { background: var(--blue); border-radius: 5px; }
+.stats meter::-moz-meter-bar { background: var(--blue); border-radius: 5px; }
+.stat-total th, .stat-total td { border-top: 1px solid var(--line); padding-top: 6px; }
 
 /* ---------- Foutpagina ---------- */
 .error { text-align: center; padding: 48px 0; }
-.error-code { font-size: 4rem; font-weight: 800; color: var(--red); margin: 0; }
+.error-code { font-size: 3.5rem; font-weight: 700; color: var(--blue); margin: 0; }
 
-.site-footer { color: var(--muted); font-size: .85rem; padding: 32px 16px; text-align: center; }
+.site-footer { color: var(--grey); font-size: .85rem; padding: 32px 16px; text-align: center; }
 
-/* ---------- Typekleuren ---------- */
-.type-normal { background: #9fa19f; }   .type-fire { background: #e62829; }
-.type-water { background: #2980ef; }    .type-grass { background: #3fa129; }
-.type-electric { background: #d9a400; } .type-ice { background: #3dcef3; }
-.type-fighting { background: #ff8000; } .type-poison { background: #9141cb; }
-.type-ground { background: #915121; }   .type-flying { background: #81b9ef; }
-.type-psychic { background: #ef4179; }  .type-bug { background: #91a119; }
-.type-rock { background: #afa981; }     .type-ghost { background: #704170; }
-.type-dragon { background: #5060e1; }   .type-dark { background: #624d4e; }
-.type-steel { background: #60a1b8; }    .type-fairy { background: #ef70ef; }
+/* ---------- Kleuren van de types ---------- */
+.type-normal { background: #9ca3af; }   .type-fire { background: #ef4444; }
+.type-water { background: #3b82f6; }    .type-grass { background: #22c55e; }
+.type-electric { background: #eab308; } .type-ice { background: #22d3ee; }
+.type-fighting { background: #f97316; } .type-poison { background: #a855f7; }
+.type-ground { background: #a16207; }   .type-flying { background: #60a5fa; }
+.type-psychic { background: #ec4899; }  .type-bug { background: #84cc16; }
+.type-rock { background: #a8a29e; }     .type-ghost { background: #7c3aed; }
+.type-dragon { background: #6366f1; }   .type-dark { background: #57534e; }
+.type-steel { background: #64748b; }    .type-fairy { background: #f472b6; }
 
-/* Lichte achtergrond achter de afbeelding, passend bij het eerste type. */
-.type-bg-fire { background: #fde5e2; }  .type-bg-water { background: #e2eefd; }
-.type-bg-grass { background: #e4f4df; } .type-bg-electric { background: #fdf4d6; }
-.type-bg-psychic { background: #fde3ec; } .type-bg-poison { background: #f0e4f8; }
-.type-bg-dragon { background: #e5e8fb; }  .type-bg-bug { background: #eff2d9; }
-
-/* ---------- Mobiel ---------- */
+/* ---------- Telefoon ---------- */
 @media (max-width: 720px) {
   .detail { grid-template-columns: 1fr; padding: 16px; }
   .detail-image { min-height: 220px; }
